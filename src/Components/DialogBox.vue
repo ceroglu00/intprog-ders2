@@ -9,7 +9,7 @@
         </div>
 
         <div style="display: flex; justify-content: end; gap: 3px">
-          <button @click="dialogBox=!dialogBox">Ok</button>
+          <button @click="dialogBox=!dialogBox">OKEY</button>
           <button @click="dialogBox=!dialogBox">Cancel</button>
         </div>
 
