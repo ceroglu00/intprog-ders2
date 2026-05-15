@@ -1,20 +1,23 @@
 <template>
   <section name="DialogBox">
-    <div v-if="dialogBox" class="overlay">
-      <div id="Mesaj" class="dialogBox">
-        <h4 style="padding: 3px; margin: 0px">{{ icerik.baslik }}</h4>
-
-        <div style="padding: 5px">
-          <p>{{ icerik.mesaj }}</p>
-        </div>
-
-        <div style="display: flex; justify-content: end; gap: 3px">
-          <button @click="dialogBox=!dialogBox">OKEY</button>
-          <button @click="dialogBox=!dialogBox">Cancel</button>
-        </div>
-
-      </div>
+    <div @click="$emit('close')" class="overlay">
     </div>
+
+
+    <div id="Mesaj" class="dialogBox">
+      <h4 style="padding: 3px; margin: 0px">{{ icerik.baslik }}</h4>
+
+      <div style="padding: 5px">
+        <p>{{ icerik.mesaj }}</p>
+      </div>
+
+      <div style="display: flex; justify-content: end; gap: 3px">
+        <button @click="$emit('close')">OKEY</button>
+        <button @click="$emit('close')">Cancel</button>
+      </div>
+
+    </div>
+
   </section>
 
 
@@ -23,6 +26,8 @@
 <script setup>
 
 import {ref} from "vue";
+
+defineEmits(["close"]);
 
 defineProps({
   icerik: {
@@ -46,7 +51,7 @@ var dialogBox = ref(true);
   position: absolute;
   top: 20px;
   left: calc(50% - 100px);
-
+  padding: 5px;
   box-shadow: black 2px 2px 10px;
 }
 
@@ -58,4 +63,9 @@ var dialogBox = ref(true);
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+button {
+  color: orange !important;
+}
+
 </style>

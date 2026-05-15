@@ -46,10 +46,7 @@
 
     <section name="DialogBoxlar">
 
-      <DialogBox :icerik="{
-        mesaj: 'KAZANDIN HELAL',
-        baslik: 'Yeni Mesaj',
-      }"></DialogBox>
+      <DialogBox @close="dialogBox=!dialogBox" v-if="dialogBox" :icerik="oyunSonuMesajı"></DialogBox>
 
     </section>
 
@@ -64,7 +61,10 @@ import DialogBox from "@/Components/DialogBox.vue";
 
 var dialogBox = ref(false);
 
-var dialogBoxBaslik = ref("YENİ BİR MESAJ");
+var oyunSonuMesajı = ref({
+  mesaj: "",
+  baslik: "Oyun sonu mesajı",
+})
 
 var oyuncu = ref({
   can: 100,
@@ -150,7 +150,7 @@ function KazananKontrolü() {
     //  alert("CANAVAR KAZANDI")
 
     setTimeout(() => {
-      dialogMesaj.value = `Toplam Round Sayısı: ${roundSayısı}\nCanavar Kazandı`
+      oyunSonuMesajı.value.mesaj = `Toplam Round Sayısı: ${roundSayısı}\nCanavar Kazandı`
       dialogBox.value = true;
     }, 50);
 
@@ -159,7 +159,7 @@ function KazananKontrolü() {
     // Oyuncu Kazandı
     //  alert("OYUNCU KAZANDI")
     setTimeout(() => {
-      dialogMesaj.value = `Toplam Round Sayısı: ${roundSayısı}\nOyuncu Kazandı`
+      oyunSonuMesajı.value.mesaj = `Toplam Round Sayısı: ${roundSayısı}\nOyuncu Kazandı`
       dialogBox.value = true;
     }, 50);
     oyunBitti = true;
@@ -227,6 +227,8 @@ function LogOluştur(mesaj) {
   height: 20px;
   border-radius: 20px;
 }
+
+
 
 
 </style>

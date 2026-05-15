@@ -8,4 +8,7 @@
 import Anasayfa from "@/Components/Anasayfa.vue";
 </script>
 
-<style scoped></style>
+<style scoped>
+
+
+</style>
